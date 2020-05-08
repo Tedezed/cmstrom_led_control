@@ -1,7 +1,7 @@
 # CMSTROM led control for Linux
 
 Code designed for this specific keyboard, but easily modifiable for others, modify variables: `led_path` and `kbd`
-<img align="left" width="80" src="./cm-storm-devastator-teclado-raton.jpg" />
+<img width="80" src="./img/cm-storm-devastator-teclado-raton.jpg" />
 
 ### Sources:
 
