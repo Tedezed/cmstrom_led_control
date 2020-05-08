@@ -4,11 +4,6 @@ Code designed for this specific keyboard, but easily modifiable for others, modi
 
 <img src="./img/cm-storm-devastator-teclado-raton.jpg" />
 
-### Sources:
-
-- https://stackoverflow.com/questions/9015506/how-to-identify-shift-ctrl-keys-were-pressed-in-the-linux-world-without-using-g
-- https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
-
 ### Install
 
 - Build: `g++ cmstrom_led.cpp -o key -lncurses`
