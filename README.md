@@ -1,6 +1,6 @@
 # CMSTROM led control for Linux
 
-Code designed for this specific keyboard, but easily modifiable for others, modify variables: `led_path` and `kbd`
+Code designed for this specific keyboard **Cooler Master CM Storm Devastator**, but easily modifiable for others, modify variables: `led_path` and `kbd`
 
 <img src="./img/cm-storm-devastator-teclado-raton.jpg" />
 
