@@ -1,6 +1,8 @@
 // By Tedezed
 
 #include <iostream>
+#include <thread>
+#include <chrono>
 #include <fstream>
 #include <string>
 #include <stdio.h>
@@ -49,6 +51,7 @@ int main (int argc, char *argv[])
     }
     brightness.close();
     
+    std::this_thread::sleep_for(std::chrono::nanoseconds(10000000));
   }
   
   fclose(kbd);
