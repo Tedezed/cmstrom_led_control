@@ -7,6 +7,7 @@ Code designed for this specific keyboard **Cooler Master CM Storm Devastator**, 
 ### Install
 
 - Build: `g++ cmstrom_led.cpp -o key -lncurses`
+- Check that it works correctly: `./cmstrom_led`
 - Install: `sudo cp cmstrom_led /bin/`
 
 ##### Option 1 - Create: `/etc/systemd/system/cmstrom_led.service`
@@ -37,3 +38,7 @@ exit 0
 ```
 
 Permissions: `chmod +x /etc/rc3.d/cmstrom_led.sh`
+
+### Bonus
+
+You can see which key you are pressing, uncomment the following line: https://github.com/Tedezed/cmstrom_led_control/blob/master/cmstrom_led.cpp#L33
