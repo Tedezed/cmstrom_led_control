@@ -27,7 +27,7 @@ SysVStartPriority=99
 WantedBy=multi-user.target
 ```
 
-Enable unit: `sudo systemctl enabled cmstrom_led && systemctl start cmstrom_led`
+Enable unit: `sudo systemctl enable cmstrom_led && systemctl start cmstrom_led`
 
 
 ##### Option 2 - Create: `/etc/rc3.d/S01cmstrom_led.sh`
