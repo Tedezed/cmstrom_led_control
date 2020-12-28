@@ -6,8 +6,22 @@ Code designed for this specific keyboard **Cooler Master CM Storm Devastator**, 
 
 ### Install
 
-- Build: `g++ cmstrom_led.cpp -o key -lncurses`
-- Install: `sudo cp cmstrom_led /bin/`
+- Build: `g++ cmstrom_led.cpp -o cmstrom_led -lncurses`
+- Install: `sudo cp -f cmstrom_led /bin/`
+
+Get input id:
+```
+$ ls /sys/class/leds/
+input7::capslock  input7::numlock  input7::scrollloc
+```
+
+Check path:
+```
+$ ls /sys/class/leds/input7::scrolllock/brightness
+/sys/class/leds/input7::scrolllock/brightness
+```
+
+Input is 7 in my case.
 
 ##### Option 1 - Create: `/etc/systemd/system/cmstrom_led.service`
 ```
@@ -16,7 +30,7 @@ ConditionPathExists=/bin/cmstrom_led
  
 [Service]
 Type=simple
-ExecStart=/bin/cmstrom_led
+ExecStart=/bin/cmstrom_led 7
 TimeoutSec=0
 StandardOutput=tty
 RemainAfterExit=yes
@@ -26,13 +40,14 @@ SysVStartPriority=99
 WantedBy=multi-user.target
 ```
 
+Reload units: `systemctl daemon-reload`
 Enable unit: `sudo systemctl enabled cmstrom_led && systemctl start cmstrom_led`
 
 
 ##### Option 2 - Create: `/etc/rc3.d/S01cmstrom_led.sh`
 ```
 #!/bin/sh -e
-/bin/cmstrom_led &
+/bin/cmstrom_led 7 &
 exit 0
 ```
 

@@ -5,6 +5,7 @@
 #include <chrono>
 #include <fstream>
 #include <string>
+#include <string.h>
 #include <stdio.h>
 #include <linux/input.h>
 
@@ -21,11 +22,23 @@ int main (int argc, char *argv[])
 {
   ofstream brightness; // Write
   bool led_state = true;
-  string led_path = "/sys/class/leds/input6::scrolllock/brightness";
 
   struct input_event ev;
   FILE *kbd = fopen("/dev/input/by-id/usb-SINO_WEALTH_USB_KEYBOARD-event-kbd", "r");
   
+  // Check argument for /sys/class/leds/input
+  if (argc < 2 || (argc > 2))
+  {
+      cerr << "Need one argument" << endl;
+      return -1;
+  }
+  else
+  {
+      cout <<  "input: " << argv[1] << endl;
+  }
+  string led_path = "/sys/class/leds/input" + string(argv[1]) + "::scrolllock/brightness";
+  cout << led_path << endl;
+
   while (fread(&ev, sizeof(ev), 1, kbd) == 1)
   {
     if (ev.type == EV_KEY && (ev.code == KEY_SCROLLLOCK && ev.value == 0))
