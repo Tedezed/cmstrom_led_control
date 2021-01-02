@@ -31,7 +31,7 @@ ConditionPathExists=/bin/cmstrom_led
  
 [Service]
 Type=simple
-ExecStart=/bin/cmstrom_led 7
+ExecStart=/bin/bash -c "/bin/cmstrom_led $(ls /sys/class/leds/ | grep scroll | cut -d ':' -f1 | sed 's/input//g')"
 TimeoutSec=0
 StandardOutput=tty
 RemainAfterExit=yes
@@ -48,7 +48,7 @@ Enable unit: `sudo systemctl enabled cmstrom_led && systemctl start cmstrom_led`
 ##### Option 2 - Create: `/etc/rc3.d/S01cmstrom_led.sh`
 ```
 #!/bin/sh -e
-/bin/cmstrom_led 7 &
+/bin/bash -c "/bin/cmstrom_led $(ls /sys/class/leds/ | grep scroll | cut -d ':' -f1 | sed 's/input//g')" &
 exit 0
 ```
 
