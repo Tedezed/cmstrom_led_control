@@ -31,6 +31,7 @@ ConditionPathExists=/bin/cmstrom_led
  
 [Service]
 Type=simple
+User=root
 ExecStart=/bin/bash -c "/bin/cmstrom_led $(ls /sys/class/leds/ | grep scroll | cut -d ':' -f1 | sed 's/input//g')"
 TimeoutSec=0
 StandardOutput=tty
